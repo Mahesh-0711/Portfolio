@@ -64,11 +64,11 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode, activeSec
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          visible ? 'translate-y-0' : '-translate-y-full'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          visible || isOpen ? 'translate-y-0' : '-translate-y-full'
         } ${
-          scrolled
-            ? 'bg-white/80 dark:bg-[#0B0F19]/80 border-b border-slate-200 dark:border-white/10 backdrop-blur-md py-4'
+          scrolled || isOpen
+            ? 'bg-white dark:bg-[#0B0F19] border-b border-slate-200 dark:border-white/10 py-4 shadow-md'
             : 'bg-transparent py-6'
         }`}
       >
@@ -205,7 +205,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode, activeSec
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 bg-white/95 dark:bg-[#0B0F19]/95 z-35 flex flex-col pt-24 px-6 lg:hidden backdrop-blur-lg"
+            className="fixed inset-0 bg-white dark:bg-[#0B0F19] z-40 flex flex-col pt-24 px-6 lg:hidden overflow-y-auto"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
