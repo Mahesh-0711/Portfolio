@@ -215,7 +215,7 @@ export const Hero: React.FC = () => {
 
           {/* Name Header */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white mb-4 leading-tight"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -228,7 +228,7 @@ export const Hero: React.FC = () => {
 
           {/* Role Typewriter text */}
           <motion.div
-            className="h-10 text-lg sm:text-xl font-mono text-brand-purple dark:text-brand-cyan font-bold tracking-wide mb-6 flex items-center"
+            className="min-h-[2.5rem] py-1 text-lg sm:text-xl font-mono text-brand-purple dark:text-brand-cyan font-bold tracking-wide mb-6 flex items-center flex-wrap"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -249,7 +249,7 @@ export const Hero: React.FC = () => {
 
           {/* Action CTAs */}
           <motion.div
-            className="flex flex-wrap gap-4 items-center"
+            className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center w-full sm:w-auto"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -257,7 +257,7 @@ export const Hero: React.FC = () => {
             {/* Download Resume */}
             <button
               onClick={handleResumeDownload}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-brand-purple to-brand-blue border border-white/10 hover:brightness-110 shadow-lg shadow-brand-purple/10 hover:shadow-brand-purple/20 transition-all font-semibold text-sm text-white"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-brand-purple to-brand-blue border border-white/10 hover:brightness-110 shadow-lg shadow-brand-purple/10 hover:shadow-brand-purple/20 transition-all font-semibold text-sm text-white"
             >
               <FileDown size={16} />
               <span>Download Resume</span>
@@ -266,7 +266,7 @@ export const Hero: React.FC = () => {
             {/* View Projects */}
             <button
               onClick={() => scrollToSection('#projects')}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/15 transition-all font-semibold text-sm text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/15 transition-all font-semibold text-sm text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white"
             >
               <span>View Projects</span>
               <ArrowUpRight size={16} className="text-slate-400 dark:text-dark-textMuted" />
@@ -275,7 +275,7 @@ export const Hero: React.FC = () => {
             {/* Contact */}
             <button
               onClick={() => scrollToSection('#contact')}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-transparent border border-brand-cyan/20 hover:border-brand-cyan/40 transition-all font-semibold text-sm text-brand-purple dark:text-brand-cyan animate-pulse"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-transparent border border-brand-cyan/20 hover:border-brand-cyan/40 transition-all font-semibold text-sm text-brand-purple dark:text-brand-cyan animate-pulse"
             >
               <Mail size={16} />
               <span>Contact Details</span>
@@ -368,7 +368,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Down Scroll Indicator mouse */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 cursor-pointer" onClick={() => scrollToSection('#about')}>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-1 cursor-pointer" onClick={() => scrollToSection('#about')}>
         <span className="text-[9px] font-mono tracking-widest text-slate-400 dark:text-dark-textMuted uppercase animate-pulse">
           Scroll Down
         </span>
