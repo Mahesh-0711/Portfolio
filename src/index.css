@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #FFFFFF;
+  --text-color: #0F172A;
+  --scrollbar-track: #F1F5F9;
+  --scrollbar-thumb-border: #F1F5F9;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --grid-line: rgba(15, 23, 42, 0.03);
+  --gradient-border-inner: #FFFFFF;
+}
+
+.dark {
+  --bg-color: #0B0F19;
+  --text-color: #F8FAFC;
+  --scrollbar-track: #0B0F19;
+  --scrollbar-thumb-border: #0B0F19;
+  --glass-bg: rgba(15, 23, 42, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --gradient-border-inner: #0B0F19;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Custom Premium Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #7C3AED 0%, #3B82F6 50%, #06B6D4 100%);
+    border-radius: 9999px;
+    border: 2px solid var(--scrollbar-thumb-border);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #9061F9 0%, #60A5FA 50%, #22D3EE 100%);
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: var(--glass-bg);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.02;
+  z-index: 999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Radial spotlight effect */
+.spotlight {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(124, 58, 237, 0.06),
+    transparent 80%
+  );
+  transition: opacity 0.3s;
+}
+
+/* Gradient Borders */
+.gradient-border-wrap {
+  position: relative;
+  background: linear-gradient(135deg, #7C3AED, #3B82F6, #06B6D4);
+  padding: 1px;
+  border-radius: 1rem;
+}
+
+.gradient-border-inner {
+  background: var(--gradient-border-inner);
+  border-radius: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Glow highlights */
+.glow-text-purple {
+  text-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+.glow-card-flagship {
+  box-shadow: 0 0 40px -10px rgba(124, 58, 237, 0.35);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+/* Interactive grids */
+.grid-bg {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  transition: background-image 0.3s ease;
+}
+
+/* Aurora backgrounds */
+.aurora-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  filter: blur(100px);
+  opacity: 0.12;
+  border-radius: 50%;
+}
+
+.aurora-1 {
+  background: #7C3AED;
+  width: 600px;
+  height: 600px;
+  top: -10%;
+  right: -10%;
+}
+
+.aurora-2 {
+  background: #3B82F6;
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  left: -10%;
+}
+
+.aurora-3 {
+  background: #06B6D4;
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  right: 20%;
+}
+
+/* Hide scrollbar for elements but keep scroll function */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Smooth active menu link animations */
+.active-nav-dot {
+  position: relative;
+}
+.active-nav-dot::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #06B6D4;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #06B6D4;
+}
