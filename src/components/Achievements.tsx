@@ -45,13 +45,13 @@ export const Achievements: React.FC = () => {
                   <Trophy size={24} />
                 </div>
                 <span className="text-[10px] font-mono font-bold text-brand-purple border border-brand-purple/20 px-3.5 py-1 rounded-full bg-brand-purple/5 uppercase tracking-widest">
-                  Hackathon Winner
+                  Project Spotlight
                 </span>
               </div>
 
               {/* Title */}
               <h3 className="font-display font-extrabold text-lg sm:text-xl text-white tracking-wide uppercase group-hover:text-brand-purple transition-colors mb-4">
-                Sclerathon Hackathon
+                Sclerathon Innovation Project
               </h3>
 
               {/* Details list */}

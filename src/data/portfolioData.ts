@@ -75,7 +75,7 @@ export const portfolioData = {
     location: "Sirsi, Karnataka, India",
     address: "Marigudi Road, Sirsi, Uttara Kannada, Karnataka – 581401",
     github: "Mahesh-0711",
-    linkedin: "mahesh-kamat",
+    linkedin: "mahesh-kamat-",
     availability: "Open for Internships & Full-Time Roles",
     cvUrl: "#"
   },
@@ -85,8 +85,7 @@ export const portfolioData = {
     { label: "Graduation", value: "2027" },
     { label: "Focus Area", value: "AI & ML" },
     { label: "Projects Completed", value: "2" },
-    { label: "Certifications", value: "6" },
-    { label: "Hackathons", value: "1 Win" }
+    { label: "Certifications", value: "6" }
   ],
 
   skills: [
