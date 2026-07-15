@@ -45,11 +45,11 @@ const StatCounter: React.FC<StatCounterProps> = ({ value, suffix = '', duration 
 
 export const StatsDashboard: React.FC = () => {
   const statsList = [
-    { label: 'Projects Completed', val: 3, suffix: '', icon: <FolderGit size={22} className="text-brand-purple" /> },
+    { label: 'Projects Completed', val: 5, suffix: '', icon: <FolderGit size={22} className="text-brand-purple" /> },
     { label: 'Programming Languages', val: 4, suffix: '', icon: <Code2 size={22} className="text-brand-blue" /> },
     { label: 'Certifications', val: 6, suffix: '', icon: <Award size={22} className="text-brand-cyan" /> },
     { label: 'Technologies & Tools', val: 3, suffix: '', icon: <FileSpreadsheet size={22} className="text-brand-purple" /> },
-    { label: 'GitHub Repositories', val: 3, suffix: '', icon: <GitMerge size={22} className="text-brand-blue" /> }
+    { label: 'GitHub Repositories', val: 5, suffix: '', icon: <GitMerge size={22} className="text-brand-blue" /> }
   ];
 
   return (

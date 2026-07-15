@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, X } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import type { CertificationItem } from '../data/portfolioData';
 
 // Stylized Org Logo helper to replace empty icons with premium vector badges
 const OrgLogoBadge: React.FC<{ provider: string }> = ({ provider }) => {
@@ -36,6 +37,17 @@ const OrgLogoBadge: React.FC<{ provider: string }> = ({ provider }) => {
 };
 
 export const Certifications: React.FC = () => {
+  const [selectedCertificate, setSelectedCertificate] = useState<CertificationItem | null>(null);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedCertificate(null);
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -88,8 +100,12 @@ export const Certifications: React.FC = () => {
               variants={cardVariants}
               className="p-[1px] rounded-2xl bg-gradient-to-br from-slate-200 dark:from-white/10 to-transparent dark:to-transparent border border-slate-200 dark:border-white/5 hover:border-brand-purple/20 dark:hover:border-brand-purple/25 transition-all duration-300 group hover:-translate-y-1 shadow-lg"
             >
-              {/* Inner glass card */}
-              <div className="bg-white/80 dark:bg-[#0E1321]/95 rounded-[0.95rem] p-6 h-52 flex flex-col justify-between items-start relative overflow-hidden">
+              <button
+                type="button"
+                onClick={() => cert.imageUrl && setSelectedCertificate(cert)}
+                className="bg-white/80 dark:bg-[#0E1321]/95 rounded-[0.95rem] p-6 h-52 w-full flex flex-col justify-between items-start relative overflow-hidden text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+                aria-label={`View ${cert.title} certificate`}
+              >
                 {/* Spotlight background */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.02),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.01),transparent_70%)] pointer-events-none" />
 
@@ -119,25 +135,50 @@ export const Certifications: React.FC = () => {
                     </span>
                   </div>
                   
-                  {/* View button */}
-                  {cert.credentialUrl && (
-                    <a
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-dark-textMuted hover:text-brand-purple dark:hover:text-white hover:border-brand-purple/20 dark:hover:border-brand-cyan/20 transition-all flex items-center justify-center shrink-0 shadow-sm"
-                      title="View Certificate"
-                    >
-                      <ExternalLink size={14} />
-                    </a>
-                  )}
+                  <span className="p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-dark-textMuted group-hover:text-brand-purple dark:group-hover:text-white group-hover:border-brand-purple/20 dark:group-hover:border-brand-cyan/20 transition-all flex items-center justify-center shrink-0 shadow-sm" title="View Certificate">
+                    <ExternalLink size={14} />
+                  </span>
                 </div>
-              </div>
+              </button>
             </motion.div>
           ))}
         </motion.div>
 
       </div>
+
+      {selectedCertificate?.imageUrl && (
+        <motion.div
+          className="fixed inset-0 z-[100] bg-slate-950/85 backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedCertificate.title} certificate`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedCertificate(null)}
+        >
+          <motion.div
+            className="relative max-w-6xl w-full max-h-full"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedCertificate(null)}
+              className="absolute -top-3 -right-2 sm:-right-3 z-10 p-2 rounded-full bg-white text-slate-900 shadow-lg hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+              aria-label="Close certificate"
+            >
+              <X size={20} />
+            </button>
+            <img
+              src={selectedCertificate.imageUrl}
+              alt={`${selectedCertificate.title} certificate`}
+              className="w-full max-h-[85vh] object-contain rounded-xl bg-white shadow-2xl"
+            />
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 };

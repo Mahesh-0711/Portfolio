@@ -18,7 +18,7 @@ export const GithubSection: React.FC = () => {
 
   // Real stats fallback in case of rate limiting
   const fallbackStats = {
-    public_repos: 12,
+    public_repos: 5,
     followers: 18,
     following: 15,
     avatar_url: 'https://avatars.githubusercontent.com/u/121852926?v=4', // Mahesh's actual GitHub profile avatar or generic placeholder if not available
@@ -70,7 +70,7 @@ export const GithubSection: React.FC = () => {
       .then((data) => {
         setUserData({
           avatar_url: data.avatar_url,
-          public_repos: data.public_repos || fallbackStats.public_repos,
+          public_repos: fallbackStats.public_repos,
           followers: data.followers || fallbackStats.followers,
           following: data.following || fallbackStats.following,
           name: data.name || portfolioData.personalInfo.name,

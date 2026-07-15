@@ -41,6 +41,7 @@ export interface CertificationItem {
   title: string;
   provider: string;
   credentialUrl?: string;
+  imageUrl?: string;
   badgeType: string;
   date: string;
 }
@@ -84,7 +85,7 @@ export const portfolioData = {
     { label: "CGPA", value: "7.91/10" },
     { label: "Graduation", value: "2027" },
     { label: "Focus Area", value: "AI & ML" },
-    { label: "Projects Completed", value: "2" },
+    { label: "Projects Completed", value: "5" },
     { label: "Certifications", value: "6" }
   ],
 
@@ -294,12 +295,12 @@ export const portfolioData = {
   ] as EducationItem[],
 
   certifications: [
-    { title: "Java Programming", provider: "NPTEL", badgeType: "Gold/Elite Certificate", date: "Oct 2023", credentialUrl: "https://nptel.ac.in/" },
-    { title: "MongoDB Certification", provider: "MongoDB University", badgeType: "Verified Developer", date: "Mar 2024", credentialUrl: "https://learn.mongodb.com/" },
-    { title: "Infosys Springboard AI", provider: "Infosys Springboard", badgeType: "Specialization", date: "Jun 2024", credentialUrl: "https://springboard.infosys.com/" },
-    { title: "Infosys Deep Learning", provider: "Infosys Springboard", badgeType: "Specialization", date: "Jul 2024", credentialUrl: "https://springboard.infosys.com/" },
-    { title: "Infosys C Programming", provider: "Infosys Springboard", badgeType: "Verified Developer", date: "Dec 2023", credentialUrl: "https://springboard.infosys.com/" },
-    { title: "Foundation Workshop on Product Design & Innovation", provider: "DM ISSC", badgeType: "Design Workshop Badge", date: "Sep 2023", credentialUrl: "#" }
+    { title: "Programming in Java", provider: "NPTEL", badgeType: "Elite Certificate · 88%", date: "Oct 2025", imageUrl: "/certificates/nptel-java.jpeg" },
+    { title: "Sclerathon 2.0", provider: "Canara Engineering College", badgeType: "Certificate of Participation", date: "Dec 2025", imageUrl: "/certificates/sclerathon.jpeg" },
+    { title: "Introduction to Data Science", provider: "Infosys Springboard", badgeType: "Course Completion", date: "Mar 2026", imageUrl: "/certificates/infosys-data-science.jpeg" },
+    { title: "Introduction to Natural Language Processing", provider: "Infosys Springboard", badgeType: "Course Completion", date: "Mar 2026", imageUrl: "/certificates/infosys-nlp.jpeg" },
+    { title: "Introduction to Artificial Intelligence", provider: "Infosys Springboard", badgeType: "Course Completion", date: "Mar 2026", imageUrl: "/certificates/infosys-ai.jpeg" },
+    { title: "Foundation Workshop on Product Design & Innovation", provider: "DM IISc", badgeType: "Certificate of Completion", date: "Nov 2025", imageUrl: "/certificates/product-design-innovation.jpeg" }
   ] as CertificationItem[],
 
   achievements: [
