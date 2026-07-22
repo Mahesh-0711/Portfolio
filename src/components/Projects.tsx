@@ -217,6 +217,73 @@ const AICallAgentDashboardMockup: React.FC = () => (
   </div>
 );
 
+// Mockup dashboard for Sphere (SkillBridge)
+const SphereSkillBridgeDashboardMockup: React.FC = () => (
+  <div className="w-full h-full bg-[#070A13] flex flex-col relative overflow-hidden group">
+    {/* Grid Backdrop */}
+    <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+
+    {/* Header bar */}
+    <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/60 border-b border-white/5 text-[9px] font-mono text-dark-textMuted">
+      <div className="flex items-center gap-2">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+        <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+        <span className="ml-2 text-slate-300 font-semibold uppercase tracking-wider">SkillBridge Exchange v1.0</span>
+      </div>
+      <span className="px-2 py-0.5 rounded bg-slate-900 border border-white/5 text-emerald-400">
+        ● ONLINE
+      </span>
+    </div>
+
+    {/* Main layout */}
+    <div className="grid grid-cols-12 flex-grow p-4 gap-4 h-full min-h-[220px]">
+      {/* Skill Card / Barter Balance (Left side) */}
+      <div className="col-span-5 flex flex-col justify-between bg-slate-950/60 border border-white/5 rounded-xl p-3 relative overflow-hidden">
+        <div>
+          <span className="text-[7px] font-mono text-slate-500 block uppercase">BARTER ACCOUNT</span>
+          <span className="text-xl font-display font-extrabold text-white leading-none block mt-2 tracking-wide font-mono">
+            45.0 <span className="text-xs font-sans font-semibold text-brand-purple">CREDITS</span>
+          </span>
+        </div>
+        <div className="border-t border-white/5 pt-2 mt-2">
+          <span className="text-[7px] font-mono text-slate-500 block uppercase">ACTIVE SWAP</span>
+          <div className="flex justify-between items-center mt-1 text-[8px] font-mono text-brand-cyan">
+            <span>React.js ↔ Python</span>
+            <span className="px-1.5 py-0.5 rounded bg-brand-cyan/10 border border-brand-cyan/25 text-[7px]">
+              Scheduled
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dynamic matches (Right side) */}
+      <div className="col-span-7 flex flex-col justify-between gap-3 h-full">
+        {/* Matches queue */}
+        <div className="p-2 rounded bg-slate-900/40 border border-white/5 flex flex-col gap-1">
+          <span className="text-[7px] font-mono text-slate-500 block uppercase">AVAILABLE MATCHES</span>
+          <div className="flex justify-between items-center text-[8px] font-mono text-slate-300">
+            <span>User: kamat_m</span>
+            <span className="text-brand-purple">Node.js (Expert)</span>
+          </div>
+          <div className="flex justify-between items-center text-[8px] font-mono text-slate-300">
+            <span>User: deep_r</span>
+            <span className="text-brand-cyan">FastAPI (Intermediate)</span>
+          </div>
+        </div>
+
+        {/* Rating log */}
+        <div className="p-2 rounded bg-slate-950 border border-brand-purple/20 flex flex-col gap-1 text-[8px] font-sans">
+          <span className="text-[7px] font-mono text-slate-500 block uppercase">RATING SUCCESS</span>
+          <p className="text-slate-400 italic leading-snug">
+            "Swap session completed. kamat_m rated deep_r ★5.0. 1.5 credits transferred successfully."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 // Router helper to select the correct mockup component based on project ID
 const ProjectMockup: React.FC<{ projectId: string }> = ({ projectId }) => {
   if (projectId === 'business-analytics') {
@@ -227,6 +294,9 @@ const ProjectMockup: React.FC<{ projectId: string }> = ({ projectId }) => {
   }
   if (projectId === 'ai-call-agent') {
     return <AICallAgentDashboardMockup />;
+  }
+  if (projectId === 'sphere-skillbridge') {
+    return <SphereSkillBridgeDashboardMockup />;
   }
   return <BloodDetectorDashboardMockup />;
 };

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Code, Brain, Layers, Zap, Database, BarChart3, Settings, Cpu, Shield, BookOpen
+  Code, Brain, Layers, Zap, Database, BarChart3, Settings, Cpu, Shield,
+  Terminal, MessageSquare, Bot, Shuffle, Link, Binary, FileSpreadsheet, Send, Server
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -17,6 +18,7 @@ const BrandedTechLogo: React.FC<{ name: string; size?: number }> = ({ name, size
         </svg>
       );
     case 'react':
+    case 'react.js':
       return (
         <svg width={size} height={size} viewBox="-11.5 -10.23174 23 20.46348" fill="none" className="text-cyan-400">
           <circle cx="0" cy="0" r="2.05" fill="currentColor"/>
@@ -36,20 +38,69 @@ const BrandedTechLogo: React.FC<{ name: string; size?: number }> = ({ name, size
     case 'jwt':
       return <Shield size={size} className="text-orange-500" />;
     case 'mysql':
-    case 'sqlite':
+      return <Database size={size} className="text-blue-500" />;
     case 'mongodb':
-    case 'databases':
-      return <Database size={size} className="text-blue-400" />;
+      return <Database size={size} className="text-green-400" />;
     case 'power bi':
+      return <BarChart3 size={size} className="text-yellow-500" />;
     case 'tableau':
       return <BarChart3 size={size} className="text-cyan-400" />;
+    case 'pandas':
+      return <BarChart3 size={size} className="text-purple-400" />;
+    case 'numpy':
+      return <Binary size={size} className="text-blue-400" />;
+    case 'plotly':
+      return <BarChart3 size={size} className="text-pink-400" />;
+    case 'excel':
+      return <FileSpreadsheet size={size} className="text-green-600" />;
     case 'git':
     case 'github':
       return (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className="text-slate-200 dark:text-slate-300">
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className="text-slate-700 dark:text-slate-300">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       );
+    case 'java':
+      return <Code size={size} className="text-orange-500" />;
+    case 'javascript':
+      return <Code size={size} className="text-yellow-400" />;
+    case 'c':
+      return <Code size={size} className="text-blue-500" />;
+    case 'html':
+    case 'html5':
+      return <Code size={size} className="text-orange-600" />;
+    case 'css':
+    case 'css3':
+      return <Layers size={size} className="text-blue-400" />;
+    case 'node.js':
+    case 'nodejs':
+      return <Server size={size} className="text-green-500" />;
+    case 'express.js':
+    case 'express':
+      return <Server size={size} className="text-slate-400" />;
+    case 'rest apis':
+    case 'rest api':
+      return <Link size={size} className="text-indigo-400" />;
+    case 'machine learning':
+      return <Brain size={size} className="text-purple-500" />;
+    case 'deep learning':
+      return <Cpu size={size} className="text-red-500" />;
+    case 'nlp':
+      return <MessageSquare size={size} className="text-indigo-400" />;
+    case 'transformers':
+      return <Shuffle size={size} className="text-orange-400" />;
+    case 'llms':
+    case 'llm':
+      return <Bot size={size} className="text-cyan-400" />;
+    case 'langchain':
+      return <Link size={size} className="text-emerald-400" />;
+    case 'rag':
+      return <Database size={size} className="text-purple-400" />;
+    case 'vs code':
+    case 'vscode':
+      return <Terminal size={size} className="text-blue-400" />;
+    case 'postman':
+      return <Send size={size} className="text-orange-500" />;
     default:
       return <Cpu size={size} className="text-slate-400" />;
   }
@@ -58,23 +109,20 @@ const BrandedTechLogo: React.FC<{ name: string; size?: number }> = ({ name, size
 // Skill Category Icon mapper
 const getCategoryIcon = (category: string) => {
   switch (category.toLowerCase()) {
-    case 'programming':
+    case 'languages':
       return <Code className="text-brand-purple animate-pulse" size={20} />;
-    case 'ai & machine learning':
-    case 'ai & ml':
+    case 'ai & genai':
       return <Brain className="text-brand-blue" size={20} />;
     case 'frontend':
       return <Layers className="text-brand-cyan" size={20} />;
     case 'backend':
       return <Zap className="text-brand-purple" size={20} />;
     case 'databases':
-    case 'database':
       return <Database className="text-brand-blue" size={20} />;
     case 'data analytics':
-    case 'analytics':
       return <BarChart3 className="text-brand-cyan" size={20} />;
-    case 'concepts':
-      return <BookOpen className="text-brand-purple" size={20} />;
+    case 'developer tools':
+      return <Settings className="text-brand-purple" size={20} />;
     default:
       return <Settings className="text-brand-purple" size={20} />;
   }
@@ -148,20 +196,17 @@ export default SkillCard;
 export const Skills: React.FC = () => {
   // Mapping the 7 user requested groups exactly
   const customGroups = [
-    { category: "Programming", icon: "programming" },
-    { category: "AI & Machine Learning", icon: "ai & ml" },
-    { category: "Data Analytics", icon: "analytics" },
+    { category: "Languages", icon: "programming" },
     { category: "Frontend", icon: "frontend" },
     { category: "Backend", icon: "backend" },
     { category: "Databases", icon: "database" },
-    { category: "Tools", icon: "tools" },
-    { category: "Concepts", icon: "concepts" }
+    { category: "AI & GenAI", icon: "ai & ml" },
+    { category: "Data Analytics", icon: "analytics" },
+    { category: "Developer Tools", icon: "tools" }
   ];
 
   const getSkillsByCategory = (category: string) => {
-    // Find database values (supporting slight naming differences)
-    const normalized = category.toLowerCase().replace('databases', 'database').replace('ai & machine learning', 'ai & ml');
-    const matched = portfolioData.skills.find(cat => cat.category.toLowerCase() === normalized);
+    const matched = portfolioData.skills.find(cat => cat.category.toLowerCase() === category.toLowerCase());
     return matched ? matched.skills : [];
   };
 

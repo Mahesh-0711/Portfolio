@@ -91,7 +91,7 @@ export const About: React.FC = () => {
                 {portfolioData.personalInfo.summary}
               </p>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-sans text-sm sm:text-base">
-                My passion is grounded in the convergence of Artificial Intelligence, Machine Learning, Data Analytics, and Full Stack Development. I love extracting complex patterns from datasets, generating predictive forecasts, and building highly scalable, modern architectures to display those insights interactively.
+                Experienced in applying mathematical modeling, statistical forecasting, and predictive analytics to solve complex business problems. Proficient in designing responsive frontend interfaces and high-performance asynchronous API gateways to serve deep learning models and data pipelines interactively.
               </p>
             </motion.div>
 
